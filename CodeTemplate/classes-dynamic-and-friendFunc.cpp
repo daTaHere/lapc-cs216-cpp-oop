@@ -32,11 +32,12 @@ private:
 public:
 	intArray(int s){
 		size = s;
+		// Allocate memory dynamically
 		numArray = new int[size] {};
 	}
 	~intArray() { delete[] numArray; };
 
-	// Setter
+	// Setter require user mannaul position and value input
 	void setArray(int const idx, int const val) {
 		if (idx < 0 || idx >= size) {
 			cout << "Idx Position Value out of bounds!!!!\n" << endl;
@@ -64,9 +65,11 @@ public:
 		cout << "Max Value: " << maxVal << endl;
 	}
 
+	// Friend function.... Allow access to private memebers
 	friend void swapArray(intArray& a, intArray& b);
 };
 
+// definded outside class but has access to memory if ref to objects are pass as arguments
 void swapArray(intArray& a, intArray& b) {
 	int* temp = a.numArray;
 	a.numArray = b.numArray;

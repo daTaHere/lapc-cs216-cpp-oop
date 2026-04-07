@@ -76,59 +76,6 @@ public:
 	}
 };
 
-
-
-
-
-
-//class MyString {
-//private:
-//	char* str;
-//
-//public:
-//
-//	MyString(const char* s = nullptr) {
-//		
-//		if (s == nullptr) {
-//			s = "Hello World";
-//		}
-//
-//		int len = 0;
-//		while ( s[len] != '\0') {
-//			len++;
-//		}
-//
-//		str = new char[len + 1];
-//
-//		for (int i = 0; i <= len; i++) {
-//			str[i] = s[i];
-//		}
-//	}
-//
-//	MyString(const MyString& s) {
-//		int len = 0;
-//		while (s.str[len] != '\0') {
-//			len++;
-//		}
-//
-//		str = new char[len + 1];
-//
-//		for (int i = 0; i <= len; i++) {
-//			str[i] = s.str[i];
-//		}
-//	}
-//
-//	~MyString() {
-//		delete[] str;
-//	}
-//
-//	void printStr() {
-//		cout << "str: " << str << endl;
-//	}
-//
-//};
-
-
 int main() {
 
 	MyString str1("Test It");

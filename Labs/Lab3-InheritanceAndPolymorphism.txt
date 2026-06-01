@@ -1,0 +1,107 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+const double PI = 3.14159265359;
+//base class Shape
+
+class Shape {
+public:
+    virtual double area() { return 0.0; }
+    virtual double perimeter() { return 0.0; }
+    virtual ~Shape() {};
+};
+
+
+//derived class Circle from base class Shape
+
+class Circle : public Shape {
+private:
+    double radius;
+public:
+    Circle(double r) : radius(r) {};
+    //circle override area function in base object
+
+    double area() override {
+        return PI * radius * radius;
+    };
+
+    //circle override perimeter function in base object
+    double perimeter() override {
+        return 2 * PI * radius;
+    };
+
+};
+
+
+//derived class Rectangle from base class Shape
+class Rectangle : public Shape {
+private:
+    double length;
+    double width;
+public:
+    Rectangle(double l, double w) : length(l), width(w) {};
+    //rectangle override area function in base object
+    double area() override {
+        return length * width;
+    };
+
+    //rectangle override perimeter function in base object
+    double perimeter() override {
+        return 2 * (length + width);
+
+    }
+};
+
+
+//derived class Triangle from base class Shape
+
+class Triangle : public Shape {
+private:
+    double side1, side2, side3;
+public:
+
+    Triangle(double s1, double s2, double s3) : side1(s1), side2(s2),
+        side3(s3) {
+    };
+
+    //triangle override area function in base object
+    double area() override {
+        double s = (side1 + side2 + side3) / 2.0;
+        return sqrt(s * (s - side1) * (s - side2) * (s - side3));
+    };
+
+    //triangle override perimeter function in base object
+    double perimeter() override {
+        return side1 + side2 + side3;
+
+    };
+};
+
+
+int main() {
+
+    //declare an array of pointers
+    Shape* shapes[3];
+
+    //instantiate objects
+    shapes[0] = new Circle(5.2);
+    shapes[1] = new Rectangle(2, 5);
+    shapes[2] = new Triangle(4, 4, 2);
+
+    cout << endl;
+
+    //cout member values to console
+    for (int i = 0; i < 3; i++) {
+        cout << "The area of this shape is: " << shapes[i]->area() << endl;
+        cout << "The perimeter of this shape is: " << shapes[i]->perimeter() << endl;
+        cout << endl;
+    }
+
+    //delete dynamically allocated memory
+    for (int i = 0; i < 3; i++) {
+        delete shapes[i];
+    }
+
+    return 0;
+};
